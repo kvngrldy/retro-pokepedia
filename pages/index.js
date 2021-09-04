@@ -11,6 +11,11 @@ const ScrollableContainer = css({
   height: "100%",
 });
 
+const gridContainer = css`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+`;
+
 export default function Home() {
   const [loading_fetch, set_loading_fetch] = useState(false);
 
@@ -43,7 +48,7 @@ export default function Home() {
   return (
     <div css={ScrollableContainer} onScroll={(e) => handleScroll(e)}>
       <div
-        style={{
+        css={{
           display: "flex",
           textAlign: "center",
           justifyContent: "center",
@@ -52,12 +57,7 @@ export default function Home() {
       >
         <p>POKEDEX</p>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, minmax(0,1fr)",
-        }}
-      >
+      <div css={gridContainer}>
         {data.pokemons.results?.map((pokemon, index) => (
           <div key={index}>
             <PokemonCards key={index} props={pokemon} />

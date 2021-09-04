@@ -10,6 +10,11 @@ const ScrollableContainer = css({
   overflowX: "hidden",
 });
 
+const gridContainer = css`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+`;
+
 export default function Bag() {
   const [data, set_data] = useState([]);
 
@@ -20,7 +25,7 @@ export default function Bag() {
   return (
     <div css={ScrollableContainer}>
       <div
-        style={{
+        css={{
           display: "flex",
           textAlign: "center",
           justifyContent: "center",
@@ -29,12 +34,7 @@ export default function Bag() {
       >
         <p>INVENTORY</p>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, minmax(0, 1fr)",
-        }}
-      >
+      <div css={gridContainer}>
         {data?.map((data, index) => (
           <div key={index}>
             <BagCardList set_data={set_data} key={index} props={data} />

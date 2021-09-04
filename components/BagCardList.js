@@ -120,10 +120,10 @@ const BagCardList = ({ props, set_data }) => {
             src={props.img}
           />
         </div>
-        <div style={{ width: "100%", textAlign: "center" }}>
+        <div css={{ width: "100%", textAlign: "center" }}>
           <p css={PrimaryText}>{props.nickname}</p>
         </div>
-        <div style={{ width: "100%", textAlign: "center" }}>
+        <div css={{ width: "100%", textAlign: "center" }}>
           <p css={SecondaryText}>{props.name}</p>
         </div>
       </div>

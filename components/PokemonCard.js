@@ -108,10 +108,10 @@ const PokemonCards = ({ props }) => {
             src={props.image}
           />
         </div>
-        <div style={{ width: "100%", textAlign: "center" }}>
+        <div css={{ width: "100%", textAlign: "center" }}>
           <p css={PrimaryText}>{props.name}</p>
         </div>
-        <div style={{ width: "100%", textAlign: "center" }}>
+        <div css={{ width: "100%", textAlign: "center" }}>
           <p css={SecondaryText}>Owned : {props.total_owned}</p>
         </div>
       </div>

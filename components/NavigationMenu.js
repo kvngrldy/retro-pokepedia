@@ -31,9 +31,22 @@ const Navigation = css({
   width: "100%",
 });
 
-const active = css`
-  background-color: #666666;
-`;
+const active = css({
+  width: "50%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "#666666",
+});
+
+const normal = css({
+  width: "50%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
 
 const NavigationMenu = ({ props }) => {
   const router = useRouter();
@@ -42,15 +55,8 @@ const NavigationMenu = ({ props }) => {
   return (
     <div css={Navigation}>
       <div
-        style={{
-          width: "50%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
         onClick={() => router.push("/")}
-        css={active_menu === "/" ? active : null}
+        css={active_menu === "/" ? active : normal}
       >
         <div>
           <Image
@@ -63,15 +69,8 @@ const NavigationMenu = ({ props }) => {
         <p css={active_menu === "/" ? PrimaryText : SecondaryText}> EXPLORE </p>
       </div>
       <div
-        style={{
-          width: "50%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
         onClick={() => router.push("/bag")}
-        css={active_menu !== "/" ? active : null}
+        css={active_menu !== "/" ? active : normal}
       >
         <div>
           <Image

@@ -23,6 +23,8 @@ const ThrowBall = css`
 const Shrink = css`
   animation: shrink 4s;
   animation-iteration-count: 1;
+  width: 100%;
+  height: 100%;
 `;
 
 const ShakyBall = css`
@@ -158,7 +160,7 @@ const PokemonDetail = ({ pokemon_name }) => {
     <div css={Container}>
       <div css={width}>
         <div
-          style={{
+          css={{
             display: "flex",
             height: "10%",
             paddingLeft: "1rem",
@@ -173,7 +175,7 @@ const PokemonDetail = ({ pokemon_name }) => {
         </div>
         <div css={Border}>
           <div
-            style={{
+            css={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -182,7 +184,7 @@ const PokemonDetail = ({ pokemon_name }) => {
             }}
           >
             <div
-              style={{
+              css={{
                 display: "flex",
                 flexDirection: "row",
               }}
@@ -190,7 +192,7 @@ const PokemonDetail = ({ pokemon_name }) => {
               {!gotcha ? (
                 data.pokemon.types.map((type, index) => (
                   <div
-                    style={{
+                    css={{
                       marginRight: "0.5rem",
                       border: "1px solid #666666",
                       backgroundColor: "#666666",
@@ -200,10 +202,9 @@ const PokemonDetail = ({ pokemon_name }) => {
                     key={index}
                   >
                     <p
-                      style={{
+                      css={{
                         color: "whitesmoke",
                         margin: "0px",
-                        fontFamily: "'Press Start 2P'",
                         fontSize: "10px",
                       }}
                     >
@@ -216,28 +217,26 @@ const PokemonDetail = ({ pokemon_name }) => {
               )}
             </div>
 
-            <div style={{ height: "100%", position: "relative" }}>
+            <div css={{ height: "100%", position: "relative" }}>
               {gotcha === `${data.pokemon.name} ran away!` ? null : (
                 <img
                   alt="retropokepedia"
-                  style={{ width: "100%", height: "100%" }}
-                  css={ball_thrown ? Shrink : null}
+                  css={ball_thrown ? Shrink : { width: "100%", height: "100%" }}
                   src={data.pokemon.sprites.front_default}
                 />
               )}
             </div>
           </div>
           <div
-            style={{
+            css={{
               display: "flex",
-              fontFamily: "'Press Start 2P'",
               flexDirection: "column",
               padding: "1rem",
               height: "65%",
             }}
           >
             <div
-              style={{
+              css={{
                 display: "flex",
                 flexDirection: "column",
                 height: "40%",
@@ -246,7 +245,7 @@ const PokemonDetail = ({ pokemon_name }) => {
             >
               {gotcha === "Gotcha!" ? (
                 <div
-                  style={{
+                  css={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -256,7 +255,7 @@ const PokemonDetail = ({ pokemon_name }) => {
                   {is_exist ? (
                     <p>Name already exist!</p>
                   ) : (
-                    <p style={{ textAlign: "center" }}>Name your new friend!</p>
+                    <p css={{ textAlign: "center" }}>Name your new friend!</p>
                   )}
 
                   <form
@@ -293,7 +292,7 @@ const PokemonDetail = ({ pokemon_name }) => {
                 data.pokemon.stats.map((stat, index) => (
                   <div
                     key={index}
-                    style={{
+                    css={{
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
@@ -301,32 +300,32 @@ const PokemonDetail = ({ pokemon_name }) => {
                       color: "grey",
                     }}
                   >
-                    <p style={{ margin: "0%" }}>{stat.stat.name}</p>
-                    <p style={{ margin: "0%" }}>{stat.base_stat}</p>
+                    <p css={{ margin: "0%" }}>{stat.stat.name}</p>
+                    <p css={{ margin: "0%" }}>{stat.base_stat}</p>
                   </div>
                 ))
               )}
             </div>
 
             <div
-              style={{
+              css={{
                 display: "flex",
                 flexDirection: "row",
                 height: "60%",
               }}
             >
               <div
-                style={{
+                css={{
                   display: "flex",
                   flexDirection: "column",
                   width: "50%",
                 }}
               >
                 <div>
-                  <p style={{ marginBottom: "2px" }}>Moves</p>
+                  <p css={{ marginBottom: "2px" }}>Moves</p>
                 </div>
                 <div
-                  style={{
+                  css={{
                     height: "100%",
                     overflowY: "auto",
                   }}
@@ -334,7 +333,7 @@ const PokemonDetail = ({ pokemon_name }) => {
                   {data.pokemon.moves.map((skill, index) => (
                     <p
                       key={index}
-                      style={{
+                      css={{
                         marginTop: "4px",
                         fontSize: "8px",
                         marginBottom: "4px",
@@ -346,7 +345,7 @@ const PokemonDetail = ({ pokemon_name }) => {
                 </div>
               </div>
               <div
-                style={{
+                css={{
                   width: "50%",
                   display: "flex",
                   justifyContent: "center",
@@ -360,8 +359,21 @@ const PokemonDetail = ({ pokemon_name }) => {
               >
                 <img
                   alt="retropokepedia"
-                  css={ball_thrown ? ThrowBall : ShakyBall}
-                  style={{ width: "100px", height: "100px", zIndex: "-1" }}
+                  css={
+                    ball_thrown
+                      ? css`
+                          ${ThrowBall};
+                          width: "100px";
+                          height: 100px;
+                          zindex: -1;
+                        `
+                      : css`
+                          ${ShakyBall};
+                          width: "100px";
+                          height: 100px;
+                          zindex: -1;
+                        `
+                  }
                   src="/img/pokeball.png"
                 />
               </div>
