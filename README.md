@@ -11,7 +11,7 @@ Access live here: https://vibrant-mirzakhani-b81b28.netlify.app/
 - Apollo GraphQL
 - Emotion for CSSinJS
 
-### Notable feature include:
+### Notable feature
 - Catch and store your favorite pokemon
 - Infinite Scrolling for pokemon list
 - Hybrid Client Side and Server Side Rendering
